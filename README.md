@@ -5,7 +5,7 @@ start up.exeを実行してください
 
 「main/reaper discord status.exe を実行しました。」まで表示されればstart up.exeを閉じても大丈夫です。
 
-またラインセンスが違う場合はsetting.iniのstateをいじれば変えれます。
+またラインセンスが違う場合はmainフォルダーにあるsetting.iniのstateをいじれば変えれます。
 # アンインストール方法
 タスクマネージャーを開きreaper discord status.exeを終了します
 

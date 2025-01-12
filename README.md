@@ -7,6 +7,8 @@ start up.exeを実行してください
 
 またラインセンスが違う場合はsetting.iniのstateをいじれば変えれます。
 # アンインストール方法
+タスクマネージャーを開きreaper discord status.exeを終了します
+
 REAPER-discord-statusのフォルダーを削除します
 
 Winキー + Rでファイル名を指定して実行を出して「C:\Users\%USERNAME%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup」と入力してOKを押してください

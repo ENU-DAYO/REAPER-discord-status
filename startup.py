@@ -4,7 +4,7 @@ from win32com.client import Dispatch
 
 def create_shortcut_and_execute():
     # スクリプト直下にある "reaper discord status.exe" の相対パス
-    exe_name = "reaper discord status.exe"
+    exe_name = "main/reaper discord status.exe"
     exe_path = os.path.join(os.getcwd(), exe_name)
 
     # 実行ファイルが存在するか確認

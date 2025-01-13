@@ -16,8 +16,8 @@ large_image = "reaper_logo"  # 固定の大きな画像名
 rpc = pypresence.Presence(client_id)
 rpc.connect()
 
-# 開始時間を記録
-start_time = time.time()
+# 開始時間を追跡するための辞書
+start_times = {}
 
 while True:
     data = None
@@ -25,9 +25,14 @@ while True:
         # プロセスの名前を小文字にしてマッチング
         match proc.name().lower():
             case "reaper.exe":
+                pid = proc.pid  # プロセスIDを取得
+                # プロセスが新しく検出された場合、start_time を設定
+                if pid not in start_times:
+                    start_times[pid] = time.time()
+                start_time = start_times[pid]
                 data = {
                     "state": state_message,
-                    "start": start_time,  # 経過時間を表示
+                    "start": start_time,  # 起動時間を記録
                     "large_image": large_image,
                 }
                 break
@@ -36,5 +41,9 @@ while True:
         rpc.update(**data)
     else:
         rpc.clear()
+
+    # プロセスの終了を検出して開始時間をリセット
+    current_pids = {proc.pid for proc in psutil.process_iter()}
+    start_times = {pid: st for pid, st in start_times.items() if pid in current_pids}
 
     time.sleep(15)  # リッチプレゼンスの更新は15秒に一度に制限されています
